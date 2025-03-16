@@ -2,9 +2,11 @@
 
 public class GameManager : SingletonMonoBehavior<GameManager>
 {
+    [SerializeField] private int score;
     [SerializeField] private int maxLives = 3;
     [SerializeField] private Ball ball;
     [SerializeField] private Transform bricksContainer;
+    [SerializeField] private ScoreUI scoreCounter;
 
     private int currentBrickCount;
     private int totalBrickCount;
@@ -34,6 +36,8 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         // add camera shake here
         currentBrickCount--;
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
+        score++;
+        scoreCounter.UpdateScore(score);
         if(currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
     }
 
