@@ -2,6 +2,7 @@
 
 public class GameManager : SingletonMonoBehavior<GameManager>
 {
+    [SerializeField] public GameObject[] health;
     [SerializeField] private int score;
     [SerializeField] private int maxLives = 3;
     [SerializeField] private Ball ball;
@@ -38,7 +39,8 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
         score++;
         scoreCounter.UpdateScore(score);
-        if(currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
+        Debug.Log($"Current Brick Count:{currentBrickCount}");
+        if(currentBrickCount == 0) {SceneHandler.Instance.LoadNextScene();}
     }
 
     public void KillBall()
@@ -48,4 +50,5 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         // game over UI if maxLives < 0, then exit to main menu after delay
         ball.ResetBall();
     }
+
 }
