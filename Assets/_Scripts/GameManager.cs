@@ -38,7 +38,8 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
         score++;
         scoreCounter.UpdateScore(score);
-        if(currentBrickCount == 0) {SceneHandler.Instance.LoadNextScene();}
+        if(currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
+        }
     }
 
     public void KillBall()
