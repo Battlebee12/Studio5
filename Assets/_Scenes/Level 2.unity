@@ -1756,6 +1756,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121722296}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1140922458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1140922459}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1140922459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140922458}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 543.3662, y: 287.0336, z: -92.65481}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1151411652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2433,12 +2464,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a3dfe015e34a6b8f942c6159e59f8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: []
-  score: 0
   maxLives: 3
   ball: {fileID: 4561635119993004754}
   bricksContainer: {fileID: 796630123}
-  scoreCounter: {fileID: 1576275140}
 --- !u!114 &1576275140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2456,6 +2484,8 @@ MonoBehaviour:
   scoreContainer: {fileID: 41466012}
   duration: 0.4
   animationCurve: 30
+  containerInitPosition: 0
+  moveAmount: 0
 --- !u!1001 &1708692028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2786,3 +2816,4 @@ SceneRoots:
   - {fileID: 1576275138}
   - {fileID: 1715049655}
   - {fileID: 41466011}
+  - {fileID: 1140922459}
