@@ -2,9 +2,15 @@
 
 public class GameManager : SingletonMonoBehavior<GameManager>
 {
+    [SerializeField] public GameObject[] health;
+    [SerializeField] private int score;
     [SerializeField] private int maxLives = 3;
     [SerializeField] private Ball ball;
     [SerializeField] private Transform bricksContainer;
+    [SerializeField] private ScoreUI scoreCounter;
+    [SerializeField] private GameObject gameOverScreen;
+
+    private bool isGameOver;
 
     private int currentBrickCount;
     private int totalBrickCount;
@@ -35,6 +41,8 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         CameraShake.Shake(0.3f, 0.5f);
         currentBrickCount--;
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
+        score++;
+        scoreCounter.UpdateScore(score);
         if(currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
 
     }
@@ -42,6 +50,16 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     public void KillBall()
     {
         maxLives--;
+        if(maxLives < 3){
+            Destroy(health[2].gameObject);
+        }
+        if(maxLives < 2){
+            Destroy(health[1].gameObject);
+        }
+        if(maxLives < 1){
+            Destroy(health[0].gameObject);
+        }
+        
         // update lives on HUD here
         // game over UI if maxLives < 0, then exit to main menu after delay
         ball.ResetBall();
