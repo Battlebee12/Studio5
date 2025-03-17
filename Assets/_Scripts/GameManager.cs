@@ -39,7 +39,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         score++;
         scoreCounter.UpdateScore(score);
         if(currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
-        }
+
     }
 
     public void KillBall()
