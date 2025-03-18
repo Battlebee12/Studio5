@@ -46,9 +46,9 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
 
     public void LoadMenuScene()
     {
+        nextLevelIndex = 0;
         transitionCanvas.DOLocalMoveX(initXPosition + transitionCanvas.rect.width, animationDuration).SetEase(animationType);
         StartCoroutine(LoadSceneAfterTransition(menuScene));
-        nextLevelIndex = 0;
     }
 
     private IEnumerator LoadSceneAfterTransition(string scene)

@@ -1,4 +1,8 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonMonoBehavior<GameManager>
 {
@@ -10,10 +14,12 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     [SerializeField] private ScoreUI scoreCounter;
     [SerializeField] private GameObject gameOverScreen;
 
-    private bool isGameOver;
-
     private int currentBrickCount;
     private int totalBrickCount;
+
+    void Start(){
+        gameOverScreen.SetActive(false);
+    }
 
     private void OnEnable()
     {
@@ -58,10 +64,31 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         if(maxLives < 1){
             Destroy(health[0].gameObject);
         }
+
+        if(maxLives < 0){
+            Debug.Log("GameOver met!");
+            GameOver();
+            return;
+        }
         
         // update lives on HUD here
         // game over UI if maxLives < 0, then exit to main menu after delay
         ball.ResetBall();
+    }
+
+    public void GameOver(){
+        gameOverScreen.SetActive(true);
+        Debug.Log("GameOver screen activated!");
+        Time.timeScale = 0;
+        StartCoroutine(ReturnMenu());
+    }
+
+    private IEnumerator ReturnMenu(){
+        yield return new WaitForSecondsRealtime(1.5f);
+        Time.timeScale = 1;
+        Debug.Log("Main Menu incoming...");
+        SceneHandler.Instance.LoadMenuScene();
+        gameOverScreen.SetActive(false);
     }
 
 }
