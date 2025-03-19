@@ -17,6 +17,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip ambientClip;
 
 
+
+
     private void Awake()
     {
         if (instance == null)
@@ -31,10 +33,10 @@ public class AudioManager : MonoBehaviour
     }
     void Start()
     {
-        PlayAmbientSound();
+        playAmbientSound();
     }
 
-    public void PlayAmbientSound()
+    public void playAmbientSound()
     {
 
         if (ambientClip != null && ambientSource != null)
