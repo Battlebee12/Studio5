@@ -23,14 +23,6 @@ public class Ball : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
             rb.AddForce(directionToFire * returnSpeed, ForceMode.Impulse);
         }
-        if(other.gameObject.CompareTag("Paddle")|| other.gameObject.CompareTag("Environment"))
-        {
-            AudioManager.instance.playSound(AudioManager.instance.bounceClip);
-        }
-        else if (other.gameObject.CompareTag("Bricks"))
-        {
-            AudioManager.instance.playSound(AudioManager.instance.hitClip);
-        }
     }
 
     public void ResetBall()

@@ -10,10 +10,6 @@ public class Brick : MonoBehaviour
     {
         if (destroyRoutine != null) return;
         if (!other.gameObject.CompareTag("Ball")) return;
-        
-        // Play the hit sound effect
-        AudioManager.instance.playSound(AudioManager.instance.hitClip);
-
         destroyRoutine = StartCoroutine(DestroyWithDelay());
     }
 
